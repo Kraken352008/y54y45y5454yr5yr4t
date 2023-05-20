@@ -1,0 +1,122 @@
+wait(1) do
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Kraken Hub <3", "Sentinel")
+    
+    
+    local Tab = Window:NewTab("Player")
+    local MainSection = Tab:NewSection("niko is my cupcake ifykyk ;)")
+        
+        
+    MainSection:NewButton("Infinite Yield", "pretty much admin commands", function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+    end)
+    
+    MainSection:NewButton("Auto Reroll (Legendary and higher)", "auto reroll must have rerolls", function()
+        local WHITELISTED = {"Hañma", "Songoku", "Kagutsuchi", "Sung", "Raijin", "Sanji", "Ryu", "Fujin", "Wu", "Kage", "Ohma", "Karu" ,"Akuma", "Mikazuchi", "Kure", "Kageyama"}
+    
+    while wait(0.150) do
+    if table.find(WHITELISTED, tostring(game.Players.LocalPlayer.PlayerGui.MainGui.StatusFrame["ClanName"].Text):split(" ")[2]) == nil then
+       game.ReplicatedStorage.Reroll:FireServer("BP")
+    else
+       break
+    end
+    end
+    end)
+    
+    
+    local Tab = Window:NewTab("Visuals")
+    local NIGGERSection = Tab:NewSection("we hate negros")
+    
+    NIGGERSection:NewToggle("Esp", "see players", function(state)
+        if state then
+            loadstring(game:HttpGet("https://pastebin.com/raw/EYdrTDwL"))()
+        else
+            loadstring(game:HttpGet("https://pastebin.com/raw/nE69JYZm"))()
+        end
+    end)
+    
+    
+    local Tab = Window:NewTab("Auto Perfect Block")
+    local AutoSection = Tab:NewSection("andrew no see")
+    
+    AutoSection:NewToggle("Auto Perfect Block (NOT 100% ACCURATE)", "Perfect block automaticly", function(state)
+        if state then
+            local playerl = {}
+    getgenv().Block = true
+    getgenv().Distance = 10
+    
+    task.spawn(function()
+    while task.wait() do
+    task.spawn(function()
+    for i,v in pairs(game.Players:GetChildren()) do
+    if v ~= game.Players.LocalPlayer and not table.find(playerl,v) then
+    table.insert(playerl,v)
+    task.spawn(function()
+    v.ChildAdded:Connect(function(a)
+    if (a.Name == "BlockBreakCD" or a.Name == "Combat") and getgenv().Block == true and game.Players.LocalPlayer:DistanceFromCharacter(v.Character.HumanoidRootPart.Position) <= getgenv().Distance then
+    game:GetService("ReplicatedStorage").RemoteEvent:FireServer("Block",game:GetService("Players").LocalPlayer.Character.LocalHandler.Blocking,true)
+    task.wait(0.325)
+    game:GetService("ReplicatedStorage").RemoteEvent:FireServer("Block",game:GetService("Players").LocalPlayer.Character.LocalHandler.Blocking,false)
+    end
+    end)
+    end)
+    end
+    end
+    end)
+    end
+    end)
+        else
+            local playerl = {}
+    getgenv().Block = false
+    getgenv().Distance = 7
+    
+    task.spawn(function()
+    while task.wait(0.1) do
+    task.spawn(function()
+    for i,v in pairs(game.Players:GetChildren()) do
+    if v ~= game.Players.LocalPlayer and not table.find(playerl,v) then
+    table.insert(playerl,v)
+    task.spawn(function()
+    v.ChildAdded:Connect(function(a)
+    if (a.Name == "BlockBreakCD" or a.Name == "Combat") and getgenv().Block == true and game.Players.LocalPlayer:DistanceFromCharacter(v.Character.HumanoidRootPart.Position) <= getgenv().Distance then
+    game:GetService("ReplicatedStorage").RemoteEvent:FireServer("Block",game:GetService("Players").LocalPlayer.Character.LocalHandler.Blocking,true)
+    task.wait(0.325)
+    game:GetService("ReplicatedStorage").RemoteEvent:FireServer("Block",game:GetService("Players").LocalPlayer.Character.LocalHandler.Blocking,false)
+    end
+    end)
+    end)
+    end
+    end
+    end)
+    end
+    end)
+        end
+    end)
+    
+    
+    local Tab = Window:NewTab("Styles")
+    local StyleSection = Tab:NewSection("jerry is a nigger fr")
+    
+    
+    StyleSection:NewButton("Formless (must have requirements)", "yas", function()
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer("SpecialTrainer","Formless")
+    end)
+    
+    StyleSection:NewButton("Beast (must have requirements)", "mhm", function()
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer("SpecialTrainer","Beast")
+    end)
+    
+    StyleSection:NewButton("Hitman (must have requirements and boxing)", "mhm", function()
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer("SpecialTrainer","Hitman")
+    end)
+    
+    do
+        wait(1.2)
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "ty for buying Kraken Hub";
+    Text = "if there is any bugs please let us know in #bug-reports, thank you";
+    Icon = "rbxassetid://10182334140";
+    Duration = 5;
+    })
+    end
+    end
